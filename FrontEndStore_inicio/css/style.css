@@ -1,0 +1,291 @@
+:root{
+    --primario: #9C2780;  /** Definimos paleta de colores **/
+    --primarioOscuro: #89119D;
+    --secundario: #FFCE00;
+    --secundarioOscuro: rgb(233, 287,2);
+    --blanco: #FFF;
+    --negro: #000;
+
+    --fuentePrincipal: 'Staatliches', cursive; /** Definimos tipo de fuente procedente de GOOGLE FONT**/
+    
+}
+
+html {
+    box-sizing: border-box;       /** Definimos  box sizing de paulIrish para eliminar  el recrecido de las cajas**/
+    font-size: 62.5%;              /** Este tamaño de fuente nos permite establecer que 1rem=10Px  **/
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }  
+
+ /** Globales **/
+ 
+ body{
+
+    background-color: var(--primario);
+    font-size: 1.6rem;
+    line-height: 1.5;    
+ }
+ 
+p{                        /** Definir que todos los párrafos sean iguales **/
+
+font-size: 1.8rem;
+font-family: Arial, Helvetica, sans-serif;
+color: var(--blanco);
+
+}
+
+a{                          /** Quitar la linea de abajo de  todos los enlaces **/
+    text-decoration: none;
+}
+
+img {                       /** Seleccionar todas las imagens y definir ancho**/
+    width: 100%;    
+}
+
+.contenedor {
+
+    max-width: 120rem;
+    margin: 0 auto;          /** Esta instrucción permite CENTRAR el contenedor */
+}
+
+h1, h2, h3 {
+    text-align: center;
+    color: var(--secundario);
+    font-family: var(--fuentePrincipal);
+
+}
+
+h1 {
+    font-size: 4rem;  
+}
+
+h2 {
+     font-size: 3.2rem;  
+}
+
+h3 {
+     font-size: 2.4rem;       
+}
+
+/**header**/
+
+.header {
+    display: flex ;
+    justify-content: center;
+}
+
+.header__logo {
+    margin: 3rem 0;
+}
+
+/**Footer**/
+.footer{
+background-color: var(--primarioOscuro);
+padding: 1rem 0;
+margin-top: 2rem;
+}
+.footer__texto{
+    font-family: var(--fuentePrincipal);
+    text-align: center;
+    font-size: 2.2rem;
+
+}
+
+/** Navegación**/
+
+.navegacion {     /**ES EL BLOQUE*/
+    background-color: var(--primarioOscuro);
+    padding: 1rem 0;
+    display: flex ;
+    justify-content: center;
+    gap: 2rem;    /* Separación entre elementos de navegación pero no funciona en Safari*/
+
+}
+
+.navegacion__enlace {     /* eS un ELEMENTO */
+    font-family: var(--fuentePrincipal);
+    color: var(--blanco);
+    font-size: 3rem;
+    /*margin-right: 2rem;  Nos permite una separación entre elementos en en todos los navegadores*/
+
+}
+/*MANERA ANTIGUA  que valdría en todos los navegadores pero mejor usar la nueva función gap
+.navegacion__enlace:last-of-type {
+    /**Es un PSEUDOSELECTOR.  Seleccionará siempre el últmo elemento si añadimos más y CENTRARÁ EL CONTENIDO
+}margin-right: 0;  **/
+
+
+.navegacion__enlace--activo,        /* .navegacion__enlace--activo ES EL MODIFICADOR*/
+.navegacion__enlace:hover {
+    color: var(--secundario);
+}
+
+/**Grid**/
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+       /**column-gap: 2rem;
+          row-gap: 2rem; **/
+    gap: 2rem;  /**Hace la misma función que las dos instrucciones anteriores**/
+}
+
+@media (min-width: 768px) {
+    .grid {
+      grid-template-columns:  repeat(3, 1fr);
+    }
+}
+
+/** Productos **/
+.producto{
+    background-color: var(--primarioOscuro);
+    padding: 1rem;
+}
+
+
+.producto__nombre {
+    font-size: 4rem;
+
+}
+.producto__precio {
+    font-size: 2.8rem;
+    color: var(--secundario);
+}
+.producto__nombre, 
+.producto__precio {
+    font-family: var(--fuentePrincipal);
+    margin: 1rem;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/** Gráficos **/
+.grafico {
+    min-height: 30rem;
+    background-repeat: no-repeat; /** No se repita la imagen en la posición**/
+    background-size: cover;       /** Que la imagen tome todo su espacio asignado **/
+    grid-column: 1 / 3;
+}
+
+.grafico--camisas {  
+        /** Colocar en la FILA del 2 al 3 del GRID**/
+    grid-row: 2 / 3;     
+    background-image: url(../img/grafico1.jpg);
+}
+
+.grafico--node {
+    background-image: url(../img/grafico2.jpg);
+    grid-row: 8 / 9;
+}
+
+@media (min-width: 768px) {
+
+    .grafico--node {
+        grid-row: 5 / 6;
+        grid-column:2 / 4;
+    
+    }
+}
+
+/**Nosotros**/
+
+.nosotros {             /**Habilito GRID con 2 filas que luego puedo usar para intercambiar posición elementos **/
+         display: grid;                  
+         grid-template-rows: repeat(2, auto); 
+}         
+
+@media (min-width: 768px) {
+    .nosotros {        
+        grid-template-columns:  repeat(2, 1fr);
+        column-gap: 2rem;    
+    } 
+}
+
+.nosotros__imagen {
+       grid-row: 1 / 2;    /**Pone la imagen a la izquierda si monitor es mayor, por tanto necesita Media  Queri*/
+     
+}
+@media (min-width: 768px) {
+    .nosotros__imagen{
+        grid-column: 2 / 3;
+    }
+}
+
+/** BLOQUES **/
+.bloques {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .bloques {
+    grid-template-columns: repeat(4, 1fr);  /**Presentar en 4 columnas para dispositivos con un mínimo de 768px **/
+    }    
+}
+
+.bloque {
+    text-align: center;
+}
+
+
+.bloque__titulo {
+    margin: 0;        /**quitar margenes al título para acercarlo al icono**/
+}
+
+
+
+/**NOTA IMPORTANTE: Toddas las tiendas tienen el producto a izquierda y el formulario a la derecha, es un STANDARD **/
+
+/** Página del Producto **/
+@media (min-width: 768px) {
+        .camisa {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: 2rem;
+        }
+}
+
+.formulario {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;  
+
+}
+
+.formulario__campo {
+    /**border-color: var(--primarioOscuro);
+    border-width: 1rem;
+    border-style: solid; **/
+
+    border: 1rem solid var(--primarioOscuro);
+    background-color: transparent;
+    color: var(--blanco);
+    font-size: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 1rem;
+    appearance: none;
+
+}
+
+.formulario__submit {         
+    background-color: var(--secundario);
+    border: none;
+    font-size:  2rem;
+    font-family: var(--fuentePrincipal);
+    padding: 2rem;
+    transition: background-color .3s ease;    /**se pueden establecer transiciones de tiempo para todo **/
+    /**transition: font-size .3 ease;**/
+    grid-column: 1 / 3;
+
+}
+/** Cuando se da estilos a un SUBMIT - INPUT pierden siempre la MANITA DEL CURSOR hay que invocarla nuevamente **/
+
+.formulario__submit:hover {
+    /**transition: fontsize 2.4rem  HARÁ UNA ANIMACIÓN A LETRA MÁS GRANDE **/
+    /**font-size: 2.4rem; **/
+    cursor: pointer;
+}
+
+
